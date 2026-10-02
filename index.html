@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Jirawla Aerospace - Drone-as-a-Service</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Geist:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#eff1f3",
+                        "primary-fixed-dim": "#9cd84f",
+                        "background": "#f7f9fb",
+                        "surface-tint": "#416900",
+                        "primary-container": "#8cc63f",
+                        "on-primary-fixed": "#102000",
+                        "tertiary": "#00668a",
+                        "on-background": "#191c1e",
+                        "inverse-primary": "#9cd84f",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#c4e7ff",
+                        "inverse-surface": "#2d3133",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "on-secondary-container": "#5c647a",
+                        "secondary-fixed": "#dae2fd",
+                        "surface-container-high": "#e6e8ea",
+                        "surface-container": "#eceef0",
+                        "surface": "#f7f9fb",
+                        "outline-variant": "#c2c9b3",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#b7f568",
+                        "outline": "#737a66",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#004c69",
+                        "secondary-container": "#dae2fd",
+                        "surface-container-low": "#f2f4f6",
+                        "primary": "#416900",
+                        "on-surface-variant": "#424938",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#d8dadc",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "secondary": "#565e74",
+                        "on-primary-fixed-variant": "#304f00",
+                        "on-tertiary-container": "#004c69",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#7bd0ff",
+                        "surface-bright": "#f7f9fb",
+                        "on-tertiary-fixed": "#001e2c",
+                        "surface-variant": "#e0e3e5",
+                        "tertiary-container": "#3ec1fc",
+                        "on-surface": "#191c1e",
+                        "error": "#ba1a1a",
+                        "on-primary-container": "#304f00",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-secondary-fixed": "#131b2e",
+                        "alert-red": "#a40019",
+                        "on-alert-red": "#ffffff",
+                        "alert-red-container": "#ffdad6",
+                        "on-alert-red-container": "#410002"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "unit": "8px",
+                        "margin-mobile": "20px",
+                        "container-max": "1280px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Sora"],
+                        "mono-data": ["Geist"],
+                        "display-lg": ["Sora"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "display-lg-mobile": ["Sora"],
+                        "label-caps": ["Geist"],
+                        "body-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "mono-data": ["14px", { "lineHeight": "20px", "letterSpacing": "0", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container relative">
+<!-- TopNavBar (Shared Component) -->
+<nav class="fixed top-0 left-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl border-b border-white/20 dark:border-outline-variant/10 shadow-sm transition-transform duration-300 transform" id="navbar">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop h-20 flex items-center justify-between">
+<!-- Brand Logo -->
+<a class="flex items-center gap-2 group" href="#">
+<img alt="Jirawla Aerospace Logo" class="h-10 w-auto object-contain rounded-DEFAULT" src="assets/Logo_Horizontal_Perfect.png"/>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim tracking-tight hidden sm:block">Jirawla Aerospace</span>
+</a>
+<!-- Navigation Links (Desktop) -->
+<div class="hidden md:flex items-center gap-gutter font-body-md text-body-md">
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-primary transition-colors duration-300" href="#mission">Mission</a>
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-primary transition-colors duration-300" href="#services">Services</a>
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-primary transition-colors duration-300" href="#industries">Industries</a>
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-primary transition-colors duration-300" href="surveying-mapping.html">Surveying</a>
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-primary transition-colors duration-300" href="surveillance-security.html">Security</a>
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-primary transition-colors duration-300" href="#about">About</a>
+</div>
+<!-- Trailing Action -->
+<div class="flex items-center gap-4">
+<button class="bg-primary-container text-on-primary-container font-label-caps text-label-caps uppercase px-6 py-3 rounded-DEFAULT hover:bg-primary hover:text-on-primary transition-colors duration-300 shadow-sm whitespace-nowrap scale-95 active:scale-90 transition-transform">Get Started</button>
+<!-- Mobile Menu Toggle -->
+<button aria-label="Toggle Menu" class="md:hidden text-primary p-2 focus:outline-none" id="mobile-menu-btn">
+<span class="material-symbols-outlined text-2xl">menu</span>
+</button>
+</div>
+</div>
+<!-- Mobile Navigation Menu -->
+<div class="md:hidden hidden absolute top-full left-0 w-full bg-surface/95 backdrop-blur-xl border-b border-outline-variant/20 shadow-lg" id="mobile-menu">
+<div class="flex flex-col px-margin-mobile py-4 gap-4 font-body-md text-body-md">
+<a class="text-secondary hover:text-primary block py-2 border-b border-outline-variant/10" href="#mission">Mission</a>
+<a class="text-secondary hover:text-primary block py-2 border-b border-outline-variant/10" href="#services">Services</a>
+<a class="text-secondary hover:text-primary block py-2 border-b border-outline-variant/10" href="#industries">Industries</a>
+<a class="text-secondary hover:text-primary block py-2 border-b border-outline-variant/10" href="surveying-mapping.html">Surveying</a>
+<a class="text-secondary hover:text-primary block py-2 border-b border-outline-variant/10" href="surveillance-security.html">Security</a>
+<a class="text-secondary hover:text-primary block py-2" href="#about">About</a>
+</div>
+</div>
+</nav>
+<main class="pt-20"> <!-- Offset for fixed nav -->
+<!-- Section 1: Hero -->
+<section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-surface-container-lowest">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0">
+<div class="bg-cover bg-center w-full h-full absolute inset-0 opacity-40 mix-blend-multiply" data-alt="A hyper-realistic, wide-angle view of an advanced, multi-rotor commercial drone hovering steadily above a lush, vast agricultural field during golden hour. The drone features sleek, aerodynamic aerospace-grade carbon fiber bodywork with subtle glowing green telemetry lights. The lighting is dramatic, warm sunlight slicing through light morning mist, creating a sense of precision and future-forward technology. The overall aesthetic is bright, optimistic, and premium, utilizing expansive depth of field." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDP5ngiUQVQOW6DcGI280vqEmlyiuivAOBVxMuv6tOAqJvbtU7nRT3-Dy1ZEY1-_KlpFtzqnh9H4VQJ4bQemMDkbWOYqMhSSL52Ck7MddBQysuR6itppxXkxnmjwbScI2dJj-59JJHlNr9OvRjUrEyOgcJsNumoGE0ruC0R9ecXTafzY49nD_pNTAFlRMZLco9gGtpNfS5496C8MvHCWCMAKs5hPz6d89chZuHHa0tObXx_W0MAiwMZrofux3JDJJZBsEWM4OFfMdE')"></div>
+<!-- Gradient overlay for text legibility -->
+<div class="absolute inset-0 bg-gradient-to-b from-surface/80 via-surface/40 to-surface z-10"></div>
+</div>
+<div class="relative z-20 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop w-full flex flex-col items-center text-center gap-6">
+<!-- Status Badge -->
+<div class="inline-flex items-center gap-2 bg-primary-container/20 border border-primary-container/30 px-4 py-1.5 rounded-full backdrop-blur-md">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-mono-data text-mono-data text-primary uppercase tracking-widest">System Online</span>
+</div>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface max-w-4xl tracking-tight leading-tight">
+                    Elevating Possibilities with <br class="hidden md:block"/> <span class="text-primary relative inline-block">Drone-as-a-Service<svg class="absolute -bottom-2 left-0 w-full h-3 text-primary-container opacity-50" preserveaspectratio="none" viewbox="0 0 100 10"><path d="M0 5 Q 50 10 100 5" fill="transparent" stroke="currentColor" stroke-width="4"></path></svg></span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mt-4">
+                    Deploying aerospace-grade aerial intelligence to transform your operational efficiency. Precision mapping, inspection, and security powered by autonomous flight networks.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 mt-8 w-full sm:w-auto">
+<button class="bg-primary text-on-primary font-label-caps text-label-caps uppercase px-8 py-4 rounded-DEFAULT hover:bg-surface-tint transition-all shadow-md hover:shadow-lg focus:ring-2 focus:ring-primary-container focus:outline-none">
+                        Explore Services
+                    </button>
+<button class="bg-transparent text-tertiary border border-tertiary font-label-caps text-label-caps uppercase px-8 py-4 rounded-DEFAULT hover:bg-tertiary/5 transition-all focus:ring-2 focus:ring-tertiary focus:outline-none">
+                        Contact Us
+                    </button>
+</div>
+<!-- Telemetry HUD Element (Decorative) -->
+<div class="absolute bottom-8 left-margin-mobile md:left-margin-desktop hidden lg:block opacity-60">
+<div class="font-mono-data text-mono-data text-secondary flex flex-col gap-1 border-l-2 border-primary/30 pl-3">
+<span>ALT: 420.5m</span>
+<span>SPD: 18.2 kts</span>
+<span>GPS: LOCKED</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Mission -->
+<section class="py-24 bg-surface relative overflow-hidden" id="mission">
+<!-- Subtle Grid Background -->
+<div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
+<div class="flex flex-col md:flex-row items-center gap-16">
+<div class="md:w-1/2 flex flex-col gap-6">
+<h2 class="font-headline-md text-headline-md text-primary">Our Mission</h2>
+<h3 class="font-display-lg-mobile text-display-lg-mobile text-on-surface leading-tight">Redefining precision through autonomous aerospace technology.</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            At Jirawla Aerospace, we are transforming security with AI-powered drones that will provide real-time surveillance, rapid threat detection, and emergency response. Our autonomous drones will deploy instantly upon emergency calls, monitor locations with smart analytics, and enhance safety with an integrated defense system, giving victims crucial time to escape. We will offer fast, intelligent, redefining modern security with cutting-edge drone technology.
+                        </p>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-6">
+<div class="border-l-2 border-primary-container pl-4">
+<span class="block font-headline-md text-headline-md text-on-surface">99.9%</span>
+<span class="font-label-caps text-label-caps text-secondary uppercase">Safety Record</span>
+</div>
+<div class="border-l-2 border-primary-container pl-4">
+<span class="block font-headline-md text-headline-md text-on-surface">&lt;1cm</span>
+<span class="font-label-caps text-label-caps text-secondary uppercase">Mapping Accuracy</span>
+</div>
+<div class="border-l-2 border-primary-container pl-4">
+<span class="block font-headline-md text-headline-md text-on-surface">24/7</span>
+<span class="font-label-caps text-label-caps text-secondary uppercase">Autonomous Ops</span>
+</div>
+</div>
+</div>
+<div class="md:w-1/2 relative">
+<!-- Glassmorphic Image Container -->
+<div class="relative rounded-xl overflow-hidden p-1 bg-white/40 backdrop-blur-md border border-white/60 shadow-xl">
+<div class="bg-cover bg-center w-full h-[400px] rounded-lg" data-alt="A close-up, highly detailed shot of a specialized industrial drone's gimbal camera and sensor array. The sensors are complex, featuring multiple lenses and a glowing LiDAR scanner, housed in brushed aluminum and matte black carbon fiber. The background is a softly blurred out modern industrial facility, conveying depth. Bright, clean lighting highlights the precision engineering of the drone hardware. The aesthetic is extremely sharp, premium, and technical." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCHFKDyHO81i3CNl0frlTZEFaX-Iozsm4zclXiYadrY7wLAqSxEPxSGCWVp_VEt0vHQ6V8p6-Gz0_7L27bo8r9faHKY0GFBw5GBMKPkWNhvtpo3vITI4T_O39TeUll_Ch6xXx7knOznM_NvQXqMZJBm8cCZ6tZ7n_ScATpUq84jC67o4r8UG1-9zoZuaEwJtuDY0fEgcJWm2RLOuVxmYrIjBJVOkZCcuYIBrSaLas1EBFfCu-fY72b_Q6-1U-PYHfXB4VVt49Wk-Kk')"></div>
+<!-- Floating HUD Overlay -->
+<div class="absolute top-6 right-6 bg-inverse-surface/80 text-inverse-on-surface p-3 rounded-DEFAULT backdrop-blur-xl border border-white/10 shadow-lg flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-fixed">radar</span>
+<div class="flex flex-col">
+<span class="font-mono-data text-mono-data text-xs opacity-70">SENSOR ARRAY</span>
+<span class="font-label-caps text-label-caps tracking-wider">ACTIVE SCANN</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Core Services -->
+<section class="py-24 bg-surface-container-lowest" id="services">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<span class="font-label-caps text-label-caps text-primary tracking-widest uppercase mb-4 block">Capabilities</span>
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface">Core Services</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-4">Scalable, on-demand aerial solutions tailored to complex industrial requirements.</p>
+</div>
+<!-- Bento Grid Layout for Services -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Service Card 1: Precision Agriculture (Large span) -->
+<div class="lg:col-span-2 group relative overflow-hidden rounded-xl bg-white border border-outline-variant/30 shadow-sm hover:shadow-md transition-shadow">
+<div class="absolute inset-0 bg-cover bg-center opacity-10 group-hover:opacity-20 transition-opacity duration-500" data-alt="An aerial, top-down view of a massive, geometrically perfect agricultural field. The crops are vibrant green. Overlaid softly on the image is a subtle digital grid and false-color heat map indicating crop health, blending organic nature with high-tech data visualization. The lighting is bright daylight. The style is clean, modern, and data-driven." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBp4M1iuQqaszyY-IH5RHPlGBTHXcjWrC5R43tQTNArzUg2eUSJyA6OJKoUcXrQcSPwzKsC739cYNRZRfmaS8WD6hHFAHLwLJvojimyY02i45mcPaisXHOlfgr8Wmu7CmmqEVGXUYX10iax3JHtQ66o_MD6kPBOuiO2EBfiSpmfprsljWHYQGgRLDCd57mS6khH6UB7JdOzIouVLdh-uK4smiWYt7tTCg17whZYxPvD8bkNVinWu1Nmz2BQufBXtWtDfYmMN84WEUw')"></div>
+<div class="relative p-8 h-full flex flex-col justify-between min-h-[300px]">
+<div class="flex items-start justify-between">
+<div class="w-12 h-12 rounded-full bg-primary-container/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">agriculture</span>
+</div>
+<span class="font-mono-data text-mono-data text-xs text-secondary border border-outline-variant px-2 py-1 rounded">SVC_01</span>
+</div>
+<div class="mt-12">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Precision Agriculture</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">Multispectral imaging and crop health analysis. Optimize yields, reduce resource consumption, and automate large-scale monitoring.</p>
+</div>
+</div>
+</div>
+<!-- Service Card 2: Mapping & Surveying -->
+<div class="group relative overflow-hidden rounded-xl bg-white border border-outline-variant/30 shadow-sm hover:shadow-md transition-shadow">
+<div class="absolute inset-0 bg-gradient-to-br from-tertiary-fixed/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<div class="relative p-8 h-full flex flex-col justify-between min-h-[300px]">
+<div class="flex items-start justify-between">
+<div class="w-12 h-12 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">map</span>
+</div>
+<span class="font-mono-data text-mono-data text-xs text-secondary border border-outline-variant px-2 py-1 rounded">SVC_02</span>
+</div>
+<div class="mt-12">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Mapping &amp; Surveying</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">High-resolution photogrammetry and LiDAR for topographic surveys and construction planning.</p>
+</div>
+</div>
+</div>
+<!-- Service Card 3: Industrial Inspection -->
+<div class="group relative overflow-hidden rounded-xl bg-white border border-outline-variant/30 shadow-sm hover:shadow-md transition-shadow">
+<div class="absolute inset-0 bg-gradient-to-tr from-error-container/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<div class="relative p-8 h-full flex flex-col justify-between min-h-[300px]">
+<div class="flex items-start justify-between">
+<div class="w-12 h-12 rounded-full bg-error/10 flex items-center justify-center text-error">
+<span class="material-symbols-outlined">factory</span>
+</div>
+<span class="font-mono-data text-mono-data text-xs text-secondary border border-outline-variant px-2 py-1 rounded">SVC_03</span>
+</div>
+<div class="mt-12">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Industrial Inspection</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Safe, rapid visual and thermal inspection of critical infrastructure, wind turbines, and pipelines.</p>
+</div>
+</div>
+</div>
+<!-- Service Card 4: Surveillance & Security (Large span) -->
+<a href="surveillance-security.html" class="lg:col-span-2 group relative overflow-hidden rounded-xl bg-inverse-surface text-inverse-on-surface border border-outline/30 shadow-sm hover:shadow-md transition-shadow block">
+<!-- Dark mode card exception for contrast -->
+<div class="absolute inset-0 bg-cover bg-center opacity-20 group-hover:opacity-30 transition-opacity duration-500 mix-blend-overlay" data-alt="A futuristic night-vision or thermal camera view of an industrial complex at night. The scene is rendered in high-contrast dark tones with glowing elements indicating heat signatures. Thin, precise crosshairs and technical UI elements overlay the image, suggesting an advanced surveillance system. The overall tone is secure, technical, and slightly cinematic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA8_p3RWd609vbjqa--wyH2OxtD9dVX0D1TidvnjSsUlk32k5owqvH_BzEcjswGy3pNeO8GPDChHFmI5w6CHeKvZqegKuunakCOYLNnaGWOxaBwhMKA9P63TxM-zHXjboVNQmNunFo5PDdvwt6LXABPH1lH9jn-0xEs0k1k2RXtxaeK1uL2VCXOe3fj6jDPGVNwgY9cl8uEiLKh9u8NIMkfALrQSAl2-AuU8Jcq560GNlIJ6ECQAn4wFQm9GOMXYM2j2Qnef-yVoLY')"></div>
+<div class="relative p-8 h-full flex flex-col justify-between min-h-[300px]">
+<div class="flex items-start justify-between">
+<div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white backdrop-blur-sm">
+<span class="material-symbols-outlined">shield</span>
+</div>
+<span class="font-mono-data text-mono-data text-xs text-secondary-fixed border border-secondary-fixed/30 px-2 py-1 rounded group-hover:bg-secondary-fixed group-hover:text-inverse-surface transition-colors">SVC_04 &rarr;</span>
+</div>
+<div class="mt-12">
+<h3 class="font-headline-md text-headline-md text-white mb-2 group-hover:text-alert-red-container transition-colors">Surveillance &amp; Security</h3>
+<p class="font-body-md text-body-md text-surface-variant max-w-md">Persistent perimeter monitoring, real-time threat detection, and rapid response deployment capabilities.</p>
+</div>
+</div>
+</a>
+</div>
+</div>
+</section>
+
+
+<!-- Footer (Shared Component) -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-low border-t border-outline-variant dark:border-outline w-full flat no shadows">
+<div class="max-w-container-max mx-auto px-margin-desktop py-16 grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<!-- Brand & Copyright -->
+<div class="col-span-1 md:col-span-2 flex flex-col gap-4">
+<span class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim">Jirawla Aerospace</span>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant">Precision Redefined. Empowering industries through advanced autonomous drone technology and actionable aerial data.</p>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant mt-auto pt-8">
+                        © 2024 Jirawla Aerospace. Precision Redefined.
+                    </p>
+</div>
+<!-- Links -->
+<div class="flex flex-col gap-3 font-body-md text-body-md">
+<span class="font-label-caps text-label-caps font-bold text-on-surface uppercase mb-2">Legal &amp; Support</span>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-all opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-all opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-all opacity-80 hover:opacity-100" href="#">Contact Support</a>
+</div>
+<!-- Newsletter / Additional Links -->
+<div class="flex flex-col gap-3 font-body-md text-body-md">
+<span class="font-label-caps text-label-caps font-bold text-on-surface uppercase mb-2">Resources</span>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-all opacity-80 hover:opacity-100" href="#">Fleet Specs</a>
+<div class="mt-4">
+<span class="font-label-caps text-label-caps text-on-surface uppercase mb-2 block">Subscribe</span>
+<div class="flex">
+<input class="w-full bg-surface-container border border-outline-variant rounded-l-DEFAULT px-3 py-2 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="Enter email" type="email"/>
+<button class="bg-primary text-on-primary px-3 py-2 rounded-r-DEFAULT hover:bg-surface-tint transition-colors">
+<span class="material-symbols-outlined text-sm">send</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</footer>
+</main>
+<script>
+        // Simple JS for Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Navbar shadow on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.remove('shadow-sm');
+            } else {
+                navbar.classList.add('shadow-sm');
+                navbar.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body></html>
